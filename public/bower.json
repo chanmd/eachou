@@ -1,0 +1,23 @@
+{
+  "name": "eachou",
+  "version": "0.1.0",
+  "authors": [
+    "chanmd <eclipsecmd@gmail.com>"
+  ],
+  "description": "eachou project",
+  "keywords": [
+    "eachou"
+  ],
+  "license": "none",
+  "homepage": "eachou.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2"
+  }
+}
