@@ -12,6 +12,8 @@
     "express": "~4.11.1",
     "ejs": "~1.0.0",
     "morgan": "~1.5.1",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "MD5": "*",
+    "request": "*"
   }
 }
