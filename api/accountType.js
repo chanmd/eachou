@@ -7,22 +7,23 @@ exports.getAccountType = function(id, callback) {
 	//console.log(url);
 	var options = utils.getOptions(url);
 	// console.log(options);
-	request(options, callback);
+	request.get(options, callback);
 }
 
 exports.addAccountType = function(id, callback) {
     var url = 'https://leancloud.cn/1.1/classes/accountType';
     var data = JSON.stringify({
-        "typeCode" : "aaa"
+        "typeCode" : "md's test"
     });
-    var options = utils.addOptions(url);
-    var req = request(options, callback);
-    req.on('error', function(e) {
-        console.log('problem with request: ' + e.message);
-    });
+    var options = utils.getOptions(url);
+    options.body = data;
+    request.post(options, callback);
+    // req.on('error', function(e) {
+    //     console.log('problem with request: ' + e.message);
+    // });
 
-    // attach data to request body
-    req.write(data);
-    req.end();
+    // // attach data to request body
+    // req.write(data);
+    // req.end();
     
 }
