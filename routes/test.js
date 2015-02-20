@@ -138,11 +138,85 @@ router.get('/updateNgo/:id', function(req, res, next) {
     });
 });
 
-/* test delete accountType */
+/* test delete ngo */
 router.get('/deleteNgo/:id', function(req, res, next) {
     var id = '/' + req.params.id;
     
     ngo.deleteById(id, function(error, response, body){
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error);
+        }
+    });
+});
+
+/*------------------- individual -----------------------*/
+ 
+var individual = require('../api/individual');
+
+/* test get individual by ID */
+router.get('/getInd/:id', function(req, res, next) {
+    var id = '/' + req.params.id;
+    //console.log(id);
+    
+    individual.getById(id, function (error, response, body) {
+        if(!error && response.statusCode == 200){
+            res.send(body);
+        } else {
+            res.send(error); 
+        }
+    });
+});
+
+/* test get all individual */
+router.get('/getAllInd', function(req, res, next) {
+    individual.getAll(function(error, response, body) { 
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error);
+        }
+    });
+});
+
+/* test add individual */
+router.get('/addInd', function(req, res, next) {
+    var data = JSON.stringify({
+        "firstname" : "柳",
+        "lastname" : "杨"
+    });
+
+    individual.add(data, function(error, response, body){
+        if(!error){
+            res.send("body: " + body);
+        } else {
+            res.send("error: " + error); 
+        }
+    });
+});
+
+/* test update individual */
+router.get('/updateInd/:id', function(req, res, next) {
+    var id = '/' + req.params.id;
+    var data = JSON.stringify({
+        "firstname" : "Liu"
+    });
+
+    individual.updateById(id, data, function(error, response, body){
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error);
+        }
+    });
+});
+
+/* test delete individual */
+router.get('/deleteInd/:id', function(req, res, next) {
+    var id = '/' + req.params.id;
+    
+    individual.deleteById(id, function(error, response, body){
         if(!error){
             res.send(body);
         } else {
