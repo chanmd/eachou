@@ -2,7 +2,7 @@ require('./config');
 var utils = require('./utils');
 var request = require('request');
 
-var urlRoot = 'https://leancloud.cn/1.1/classes';
+var urlRoot = 'https://leancloud.cn/1.1';
 
 exports.getById= function(className, id, callback) {
 	var url = urlRoot + className + id;
@@ -14,7 +14,6 @@ exports.getById= function(className, id, callback) {
 
 exports.getAll = function(className, callback) {
     var url = urlRoot + className;
-    console.log(url);
     var options = utils.getOptions(url);
     request.get(options, callback);
 }

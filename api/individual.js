@@ -3,7 +3,7 @@
 var request = require('request');
 var common = require('./common');
 
-var className = '/individual';
+var className = '/classes/individual';
 
 exports.getById= function(id, callback) {
     common.getById(className, id, callback);

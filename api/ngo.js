@@ -3,7 +3,7 @@
 var request = require('request');
 var common = require('./common');
 
-var className = '/ngo';
+var className = '/classes/ngo';
 
 exports.getById= function(id, callback) {
     common.getById(className, id, callback);
