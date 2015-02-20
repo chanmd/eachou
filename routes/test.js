@@ -43,11 +43,25 @@ router.get('/addAccType', function(req, res, next) {
 
 /* test update accountType */
 router.get('/updateAccType/:id', function(req, res, next) {
+    var id = '/' + req.params.id;
     var data = JSON.stringify({
         "typeCode" : "changed"
     });
 
     accountType.updateById(id, data, function(error, response, body){
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error);
+        }
+    });
+});
+
+/* test delete accountType */
+router.get('/deleteAccType/:id', function(req, res, next) {
+    var id = '/' + req.params.id;
+    
+    accountType.deleteById(id, function(error, response, body){
         if(!error){
             res.send(body);
         } else {

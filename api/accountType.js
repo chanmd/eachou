@@ -41,3 +41,9 @@ exports.updateById = function(id, data, callback) {
     options.body = data;
     request.put(options, callback);
 }
+
+exports.deleteById = function(id, callback) {
+    var url = urlRoot + className + id;
+    var options = utils.getOptions(url);
+    request.del(options, callback);
+}
