@@ -225,5 +225,96 @@ router.get('/deleteInd/:id', function(req, res, next) {
     });
 });
 
+/*------------------- user -----------------------*/
+ 
+var user = require('../api/user');
+
+/* test get user by ID */
+router.get('/getUser/:id', function(req, res, next) {
+    var id = '/' + req.params.id;
+    //console.log(id);
+    
+    user.getById(id, function (error, response, body) {
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error); 
+        }
+    });
+});
+
+/* test get all users */
+router.get('/getAllUser', function(req, res, next) {
+    user.getAll(function(error, response, body) { 
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error);
+        }
+    });
+});
+
+/* test add user */
+router.get('/addUser', function(req, res, next) {
+    var data = JSON.stringify({
+        "username" : "user1",
+        "password" : "abc321"
+    });
+
+    user.add(data, function(error, response, body){
+        if(!error){
+            res.send("body: " + body);
+        } else {
+            res.send("error: " + error); 
+        }
+    });
+});
+
+/* test update user */
+router.get('/updateUser/:id', function(req, res, next) {
+    var id = '/' + req.params.id;
+    var data = JSON.stringify({
+        "password" : "123"
+    });
+
+    user.updateById(id, data, function(error, response, body){
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error);
+        }
+    });
+});
+
+/* test delete user */
+router.get('/deleteUser/:id', function(req, res, next) {
+    var id = '/' + req.params.id;
+    
+    user.deleteById(id, function(error, response, body){
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error);
+        }
+    });
+});
+
+/* test user login */
+router.get('/login/', function(req, res, next) {
+    var data = JSON.stringify({
+        "username":"user1",
+        "password":"123"
+    });
+    //var username = "user1";
+    //var password = "123";
+    user.login(data, function(error, response, body) {
+        if(!error){
+            res.send(body);
+        } else {
+            res.send(error);
+        }
+    });
+});
+
 module.exports = router;
 
