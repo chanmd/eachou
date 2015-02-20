@@ -1,49 +1,26 @@
-//test
-require('./config');
-var utils = require('./utils');
+//require('./config');
+//var utils = require('./utils');
 var request = require('request');
+var common = require('./common');
 
-var urlRoot = 'https://leancloud.cn/1.1/classes';
 var className = '/accountType';
 
 exports.getById= function(id, callback) {
-	var url = urlRoot + className + id;
-	//console.log(url);
-	var options = utils.getOptions(url);
-	// console.log(options);
-	request.get(options, callback);
+    common.getById(className, id, callback);
 }
 
 exports.getAll = function(callback) {
-    var url = urlRoot + className;
-    console.log(url);
-    var options = utils.getOptions(url);
-    request.get(options, callback);
+    common.getAll(className, callback);
 }
 
 exports.add = function(data, callback) {
-    var url = urlRoot + className; 
-    var options = utils.getOptions(url);
-    options.body = data;
-    request.post(options, callback);
-    // req.on('error', function(e) {
-    //     console.log('problem with request: ' + e.message);
-    // });
-
-    // // attach data to request body
-    // req.write(data);
-    // req.end();
+    common.add(className, data, callback);
 }
 
 exports.updateById = function(id, data, callback) {
-    var url = urlRoot + className + id;
-    var options = utils.getOptions(url);
-    options.body = data;
-    request.put(options, callback);
+    common.updateById(className, id, data, callback);    
 }
 
 exports.deleteById = function(id, callback) {
-    var url = urlRoot + className + id;
-    var options = utils.getOptions(url);
-    request.del(options, callback);
+    common.deleteById(className, id, callback); 
 }
