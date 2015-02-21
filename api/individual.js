@@ -3,7 +3,7 @@
 var request = require('request');
 var common = require('./common');
 
-var className = '/classes/accountType';
+var className = '/classes/individual';
 
 exports.getById= function(id, callback) {
     common.getById(className, id, callback);
@@ -24,3 +24,4 @@ exports.updateById = function(id, data, callback) {
 exports.deleteById = function(id, callback) {
     common.deleteById(className, id, callback); 
 }
+
