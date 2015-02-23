@@ -1,7 +1,7 @@
 var request = require('request');
 var common = require('./common');
 
-var className = '/classes/fundraiser';
+var className = '/classes/onlineDonation';
 
 exports.getById= function(id, callback) {
     common.getById(className, id, callback);

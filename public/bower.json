@@ -4,11 +4,11 @@
   "authors": [
     "chanmd <eclipsecmd@gmail.com>"
   ],
-  "description": "eachou project",
+  "description": "eachou",
   "keywords": [
     "eachou"
   ],
-  "license": "none",
+  "license": "MIT",
   "homepage": "eachou.com",
   "ignore": [
     "**/.*",
@@ -18,6 +18,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.2"
+    "bootstrap": "~3.3.2",
+    "angular": "*"
   }
 }
