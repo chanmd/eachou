@@ -1,5 +1,25 @@
 <% include header %>
 
-<%= data.typeCode %>
+<div id="headerwrap" ng-app="fundraiserController">
+	<div class="container">
+		<div class="row centered">
+			<div class="col-lg-8 col-lg-offset-2">
+			<h1>发起一个公益众筹</h1>
+			<form class="form-horizontal">
+			<div class="form-group">
+			  <div class="col-sm-10">
+			    <input type="text" ng-model="FundName" ng-disabled="!edit" placeholder="Good name for fundraiser">
+			  </div>
+			</div>
+			</form>
+			<button class="btn btn-success" ng-disabled="error || incomplete">
+			Save
+			</button>
+			</div>
+		</div>
+	</div><!-- container -->
+</div><!-- headerwrap -->
+
+<script src = "/javascripts/AJS_fundraiser.js"></script>
 
 <% include footer %>
