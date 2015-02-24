@@ -2,7 +2,13 @@ var express = require('express');
 var router = express.Router();
 var fundraiser = require('../api/fundraiser');
 
-/* GET home page. */
+
+router.get('/', function(req, res, next) {
+
+	res.render('project', null);
+
+});
+
 router.get('/:id', function(req, res, next) {
 	var id = req.params.id;
 	fundraiser.getFundraiser(id, function (error, response, body) {
