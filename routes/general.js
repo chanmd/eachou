@@ -5,11 +5,11 @@ var user = require('../api/user');
 
 /* Render login page */
 router.get('/login/', function(req, res, next) {
-    res.render('login');
+    res.render('login', {'error': false});
 });
 
 /* login function */
-router.post('/login/login/', function(req, res, next) {
+router.post('/login/', function(req, res, next) {
     var data = JSON.stringify({
         "username": req.body.username,
         "password": req.body.password
@@ -22,7 +22,7 @@ router.post('/login/login/', function(req, res, next) {
                 var token = info.sessionToken;
                 res.render('ngoProfile', {'username':username, 'token':token});
             } else {
-                res.render('login', {'error': info});
+                res.render('login', {'error':body});
             }
         } else {
             res.send('Error! ' + error);

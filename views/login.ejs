@@ -1,6 +1,6 @@
 <% include header %>
 <br/>
-<form method="post" action="../login/login">
+<form method="post" action="../login/">
     <table align="center">
         <tr>
             <td>用户名</td>
@@ -17,9 +17,9 @@
 </form>
 
 <% 
-if (error!=null) { 
+if (error) { 
 %>
-<p><%= error %></p>
+<p><%= error.error %></p>
 
 <% } %>
 
