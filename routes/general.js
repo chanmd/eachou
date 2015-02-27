@@ -30,4 +30,15 @@ router.post('/login/', function(req, res, next) {
     });
 });
 
+router.post('/logout/', function(req, res, next) {
+    var username = req.body.username;
+    user.getByUsername(username, function(error, response, body){
+        if(!error){
+            res.send(body);
+        } else {
+            res.send('Error! ' + error);
+        }
+    });
+});
+
 module.exports = router;

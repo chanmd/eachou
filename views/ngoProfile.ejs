@@ -4,4 +4,9 @@
 <p>Hello, <%= username %> </p>
 <p>Your token is <%= token %> </p>
 
-<% include header %>
+<form method="post" action="../logout">
+    <input type="hidden" name="username" value="<%= username %>">
+    <button type="submit" value="logout">
+</form>
+
+<% include footer %>
