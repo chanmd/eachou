@@ -15,28 +15,37 @@ router.post('/login/', function(req, res, next) {
         "password": req.body.password
     });
     user.login(data, function(error, response, body) {
-        if(!error) {
-            var info = JSON.parse(body);
-            if (info.code != 210){
-                var username = info.username;
-                var token = info.sessionToken;
-                res.render('ngoProfile', {'username':username, 'token':token});
-            } else {
-                res.render('login', {'error':body});
-            }
+        var info = JSON.parse(body);
+        if (!info.error){
+            //var username = info.username;
+            //var token = info.sessionToken;
+            res.render('ngoProfile', {'user':info});
         } else {
-            res.send('Error! ' + error);
+            res.render('login', {'error':info});
         }
     });
 });
 
 router.post('/logout/', function(req, res, next) {
-    var username = req.body.username;
+    /*var username = req.body.username;
     user.getByUsername(username, function(error, response, body){
         if(!error){
             res.send(body);
         } else {
             res.send('Error! ' + error);
+        }
+    });*/
+    var id = '/' + req.body.objectId;
+    var sessionToken = req.body.sessionToken;
+    var data = JSON.stringify({
+        "sessionToken": ""
+    });
+    user.updateById(id, sessionToken, data, function(error, response, body){
+        var info = JSON.parse(body);
+        if(!info.error){
+            res.render('login', {'error':false});
+        } else {
+            res.send('Error! ' + info.error);
         }
     });
 });

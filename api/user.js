@@ -18,8 +18,12 @@ exports.add = function(data, callback) {
     common.add(className, data, callback);
 }
 
-exports.updateById = function(id, data, callback) {
-    common.updateById(className, id, data, callback);    
+exports.updateById = function(id, sessionToken, data, callback) {
+    var url = global.avos_domain + className + id;
+    var options = utils.getOptionsWithToken(url, sessionToken);
+    options.body = data;
+    request.put(options, callback);
+    //common.updateById(className, id, data, callback);    
 }
 
 exports.deleteById = function(id, callback) {
@@ -42,13 +46,16 @@ exports.getByUsername = function(username, callback) {
     var url = global.avos_domain + "/classes/accountType";
     var options = utils.getOptions(url);  
 
-    var query = JSON.stringify({
-        "where":{"typeCode":"aaa"}
-    });
+    var query = encodeURI('where={"typeCode":"aaa"}'); 
     console.log(query);
     options.body = query;
 
     request.get(options, callback);
+}
+
+/* find user by given value */
+exports.getByUsername = function(field, value, data) {
+    //todo
 }
 
 /* login */

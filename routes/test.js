@@ -257,7 +257,7 @@ router.get('/getAllUser', function(req, res, next) {
 /* test add user */
 router.get('/addUser', function(req, res, next) {
     var data = JSON.stringify({
-        "username" : "user1",
+        "username" : "user2",
         "password" : "abc321"
     });
 
@@ -274,7 +274,7 @@ router.get('/addUser', function(req, res, next) {
 router.get('/updateUser/:id', function(req, res, next) {
     var id = '/' + req.params.id;
     var data = JSON.stringify({
-        "password" : "123"
+        "username" : "user2"
     });
 
     user.updateById(id, data, function(error, response, body){

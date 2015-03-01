@@ -1,11 +1,12 @@
 <% include header %>
 
 <br/>
-<p>Hello, <%= username %> </p>
-<p>Your token is <%= token %> </p>
+<p>Hello, <%= user.username %> </p>
+<p>Your token is <%= user.sessionToken %> </p>
 
 <form method="post" action="../logout">
-    <input type="hidden" name="username" value="<%= username %>">
+    <input type="hidden" name="id" value="<%= user.objectId %>">
+    <input type="hidden" name="token" value="<%= user.sessionToken %>">
     <button type="submit" value="logout">
 </form>
 
