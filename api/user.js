@@ -19,11 +19,12 @@ exports.add = function(data, callback) {
 }
 
 exports.updateById = function(id, sessionToken, data, callback) {
-    var url = global.avos_domain + className + id;
+    /*var url = global.avos_domain + className + id;
     var options = utils.getOptionsWithToken(url, sessionToken);
     options.body = data;
     request.put(options, callback);
-    //common.updateById(className, id, data, callback);    
+    */
+    common.updateById(className, id, data, callback);    
 }
 
 exports.deleteById = function(id, callback) {
@@ -32,23 +33,26 @@ exports.deleteById = function(id, callback) {
 
 /* get user by token */
 exports.getByToken = function(token, callback) {
-    var url = global.avos_domain + className;
+    //var url = global.avos_domain + className;
+    var url = global.avos_domain + "/classes/accountType";
     var options = utils.getOptions(url);
 
-    var query = 'where={"token":"'+token+'"}';
-    options.body = query;
+    //var query = 'where={"token":"'+token+'"}';
+    var query = JSON.stringify('where={"typeCode":"aaa"}');
+    options.params = query;
 
     request.get(options, callback);
 }
 
 /* get user by username */
 exports.getByUsername = function(username, callback) {
+     //var url = global.avos_domain + className;
     var url = global.avos_domain + "/classes/accountType";
-    var options = utils.getOptions(url);  
+    var options = utils.getOptions(url);
 
-    var query = encodeURI('where={"typeCode":"aaa"}'); 
-    console.log(query);
-    options.body = query;
+    //var query = 'where={"token":"'+token+'"}';
+    var query = JSON.stringify('where={"typeCode":"aaa"}');
+    options.params = query;
 
     request.get(options, callback);
 }

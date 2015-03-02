@@ -1,0 +1,47 @@
+<% include header %>
+
+<br/>
+<h1>Registration</h1>
+
+<form method="post" action="../register/">
+    <table align="center">
+        <tr>
+            <td>Email</td>
+            <td><input name="email" type="text" ></td>
+        </tr>
+        <!--
+        <tr>
+            <td>手机号码</td>
+            <td><input name="mobilePhoneNumber" type="text" ></td>
+        </tr>
+        -->
+        <tr>
+            <td>用户名</td>
+            <td><input name="username" type="text" ></td> 
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input name="password" type="password" ></td>
+        </tr>
+        <tr>
+            <td>确认密码</td>
+            <td><input name="confirmPwd" type="password" ></td>
+        </tr>
+        <tr>
+            <td>验证码</td>
+            <td>todo</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><input type="submit" value="递交"></td>
+        </tr>
+    </table>
+</form>
+
+<% 
+if (error) { 
+%>
+<p><%= error.error %></p>
+
+<% } %>
+
+<% include footer %>
